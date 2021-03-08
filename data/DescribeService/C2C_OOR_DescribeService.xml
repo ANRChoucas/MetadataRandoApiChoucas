@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><wps:ProcessOfferings xmlns:wps="http://www.opengis.net/wps/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+  <wps:ProcessOffering jobControlOptions="async-execute dismiss sync-execute" outputTransmission="value reference" processVersion="1.0.0" processModel="native">
+    <wps:Process xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+      <ows:Title>API des waypoints de C2C par BBOX</ows:Title>
+      <ows:Abstract>This service returns different types of POI in mountain areas for planning sport activities from camptocamp API</ows:Abstract>
+      <ows:Identifier>choucas.metadata.rando.process.C2CWaypointProcess</ows:Identifier>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Les dimensions de la bbox à exporter</ows:Title>
+        <ows:Abstract>Les dimensions de la bbox à exporter : xmin, ymin, xmax, ymax dans la projection 3857.</ows:Abstract>
+        <ows:Identifier>bbox</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Le type des waypoints à exporter</ows:Title>
+        <ows:Abstract>Le type des waypoints à exporter, parmi la liste suivante :  sommet, col, lac, cascade, lieu-dit, bisse / béal, canyon, site d’escalade, SAE, refuge/cabane, gîte, abri, bivouac, camping, camp de base, produits locaux, décollage parapente, atterrissage parapente, grotte, point d’eau/source, station météo, webcam, virtuel, spot de slackline, divers, accès routier / transports en commun.</ows:Abstract>
+        <ows:Identifier>wtyp</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>ABRI</ows:Value>
+              <ows:Value>ACCES</ows:Value>
+              <ows:Value>ARR_PARAPENTE</ows:Value>
+              <ows:Value>BISSE</ows:Value>
+              <ows:Value>BIVOUAC</ows:Value>
+              <ows:Value>CAMP</ows:Value>
+              <ows:Value>CAMPING</ows:Value>
+              <ows:Value>CANYON</ows:Value>
+              <ows:Value>CASCADE</ows:Value>
+              <ows:Value>COL</ows:Value>
+              <ows:Value>DEPART_PARAPENTE</ows:Value>
+              <ows:Value>DIVERS</ows:Value>
+              <ows:Value>EAU</ows:Value>
+              <ows:Value>ESCALADE</ows:Value>
+              <ows:Value>GITE</ows:Value>
+              <ows:Value>GROTTE</ows:Value>
+              <ows:Value>LAC</ows:Value>
+              <ows:Value>LIEUDIT</ows:Value>
+              <ows:Value>METEO</ows:Value>
+              <ows:Value>PRODUIT</ows:Value>
+              <ows:Value>REFUGE</ows:Value>
+              <ows:Value>SAE</ows:Value>
+              <ows:Value>SOMMET</ows:Value>
+              <ows:Value>SPOT</ows:Value>
+              <ows:Value>VIRTUEL</ows:Value>
+              <ows:Value>WEBCAM</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Output>
+        <ows:Title>Liste des documents</ows:Title>
+        <ows:Abstract>Liste des documents contenant la description courte des waypoints</ows:Abstract>
+        <ows:Identifier>documents</ows:Identifier>
+        <wps:ComplexData>
+          <wps:Format mimeType="text/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16"/>
+          <wps:Format mimeType="text/xml" schema="http://www.opengis.net/gml/3.2"/>
+        </wps:ComplexData>
+      </wps:Output>
+      <wps:Output>
+        <ows:Title>Nombre de waypoints trouvés</ows:Title>
+        <ows:Abstract>Nombre de waypoints dans la réponse de la requête</ows:Abstract>
+        <ows:Identifier>total</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#int">int</ows:DataType>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Output>
+    </wps:Process>
+  </wps:ProcessOffering>
+</wps:ProcessOfferings>

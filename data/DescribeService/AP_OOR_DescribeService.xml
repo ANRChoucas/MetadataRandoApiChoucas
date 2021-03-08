@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><wps:ProcessOfferings xmlns:wps="http://www.opengis.net/wps/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+  <wps:ProcessOffering jobControlOptions="async-execute dismiss sync-execute" outputTransmission="value reference" processVersion="1.0.0" processModel="native">
+    <wps:Process xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+      <ows:Title>API des points d'intérêt des Aires protégées: parc naturel régional du Vercors, Parc National des Ecrins</ows:Title>
+      <ows:Abstract>This service returns different types of POI in mountain areas for planning sport activities from rando.parc-du-vercors and rando.ecrins-parcnational.fr API</ows:Abstract>
+      <ows:Identifier>choucas.metadata.rando.process.APWaypointProcess</ows:Identifier>
+      <wps:Output>
+        <ows:Title>Liste des pois</ows:Title>
+        <ows:Abstract>Liste des pois retournés dans la réponse</ows:Abstract>
+        <ows:Identifier>features</ows:Identifier>
+        <wps:ComplexData>
+          <wps:Format mimeType="text/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16"/>
+          <wps:Format mimeType="text/xml" schema="http://www.opengis.net/gml/3.2"/>
+        </wps:ComplexData>
+      </wps:Output>
+    </wps:Process>
+  </wps:ProcessOffering>
+</wps:ProcessOfferings>

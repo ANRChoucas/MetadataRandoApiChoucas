@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><wps:ProcessOfferings xmlns:wps="http://www.opengis.net/wps/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+  <wps:ProcessOffering jobControlOptions="async-execute dismiss sync-execute" outputTransmission="value reference" processVersion="1.0.0" processModel="native">
+    <wps:Process xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+      <ows:Title>API refuges.info par BBOX</ows:Title>
+      <ows:Abstract>This service returns different types of POI in mountain areas for planning sport activities from refuge.info API</ows:Abstract>
+      <ows:Identifier>choucas.metadata.rando.process.RefugesInfoProcess</ows:Identifier>
+      <wps:Input minOccurs="0" maxOccurs="1">
+        <ows:Title>Le format de l'export</ows:Title>
+        <ows:Abstract>Le format de l'export:geojson, kml, gml, gpx, csv, xml. C'est le format geojson par défaut.</ows:Abstract>
+        <ows:Identifier>format</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>csv</ows:Value>
+              <ows:Value>geojson</ows:Value>
+              <ows:Value>gml</ows:Value>
+              <ows:Value>gpx</ows:Value>
+              <ows:Value>kml</ows:Value>
+              <ows:Value>xml</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue>geojson</ows:DefaultValue>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Les dimensions de la bbox à exporter</ows:Title>
+        <ows:Abstract>Les dimensions de la bbox à exporter dans la projection 4326: ouest, sud, est, nord. Il est possible de sélectionner la planète entière via la valeur world.</ows:Abstract>
+        <ows:Identifier>bbox</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue>-13.00,44.05,17.00,49.79</ows:DefaultValue>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Les types de point</ows:Title>
+        <ows:Abstract>Les types de point à exporter, parmi la liste suivante : cabane, refuge, gite, pt_eau, sommet, pt_passage, bivouac et lac. La valeur all sélectionne tous les types.</ows:Abstract>
+        <ows:Identifier>type_points</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>all</ows:Value>
+              <ows:Value>cabane</ows:Value>
+              <ows:Value>gite</ows:Value>
+              <ows:Value>pt_eau</ows:Value>
+              <ows:Value>pt_passage</ows:Value>
+              <ows:Value>refuge</ows:Value>
+              <ows:Value>sommet</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue>all</ows:DefaultValue>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Output>
+        <ows:Title>Timestamp de la requête</ows:Title>
+        <ows:Abstract>Timestamp de la requête</ows:Abstract>
+        <ows:Identifier>timestamp</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Output>
+      <wps:Output>
+        <ows:Title>Liste des poi</ows:Title>
+        <ows:Abstract>Liste des poi contenus dans une bbox</ows:Abstract>
+        <ows:Identifier>output</ows:Identifier>
+        <wps:ComplexData>
+          <wps:Format mimeType="text/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16"/>
+          <wps:Format mimeType="text/xml" schema="http://www.opengis.net/gml/3.2"/>
+        </wps:ComplexData>
+      </wps:Output>
+    </wps:Process>
+  </wps:ProcessOffering>
+</wps:ProcessOfferings>

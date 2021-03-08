@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><wps:ProcessOfferings xmlns:wps="http://www.opengis.net/wps/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+  <wps:ProcessOffering jobControlOptions="async-execute dismiss sync-execute" outputTransmission="value reference" processVersion="1.0.0" processModel="native">
+    <wps:Process xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+      <ows:Title>API des sorties de C2C par BBOX</ows:Title>
+      <ows:Abstract>This service returns routes in mountain areas for planning sport activities from camptocamp API</ows:Abstract>
+      <ows:Identifier>choucas.metadata.rando.process.C2CRouteProcess</ows:Identifier>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>L'activité de la randonnée</ows:Title>
+        <ows:Abstract>L'activité pratiqué par le contributeur sur l'itinéraire, parmi la liste suivante :  skitouring, snow_ice_mixed, mountain_climbing, rock_climbing, ice_climbing, hingiking, snowshoeing, paragliding, mountain_biking, via_ferrata, slacklining.</ows:Abstract>
+        <ows:Identifier>act</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>hingiking</ows:Value>
+              <ows:Value>ice_climbing</ows:Value>
+              <ows:Value>mountain_biking</ows:Value>
+              <ows:Value>mountain_climbing</ows:Value>
+              <ows:Value>paragliding</ows:Value>
+              <ows:Value>rock_climbing</ows:Value>
+              <ows:Value>skitouring</ows:Value>
+              <ows:Value>slacklining</ows:Value>
+              <ows:Value>snow_ice_mixed</ows:Value>
+              <ows:Value>snowshoeing</ows:Value>
+              <ows:Value>via_ferrata</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Les dimensions de la bbox à exporter</ows:Title>
+        <ows:Abstract>Les dimensions de la bbox à exporter : xmin, ymin, xmax, ymax dans la projection 3857.</ows:Abstract>
+        <ows:Identifier>bbox</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Output>
+        <ows:Title>Liste des documents</ows:Title>
+        <ows:Abstract>Liste des documents contenant la description courte des waypoints</ows:Abstract>
+        <ows:Identifier>documents</ows:Identifier>
+        <wps:ComplexData>
+          <wps:Format mimeType="text/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16"/>
+          <wps:Format mimeType="text/xml" schema="http://www.opengis.net/gml/3.2"/>
+        </wps:ComplexData>
+      </wps:Output>
+      <wps:Output>
+        <ows:Title>Nombre de routes trouvées</ows:Title>
+        <ows:Abstract>Nombre de routes dans la réponse de la requête</ows:Abstract>
+        <ows:Identifier>total</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#int">int</ows:DataType>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Output>
+    </wps:Process>
+  </wps:ProcessOffering>
+</wps:ProcessOfferings>
