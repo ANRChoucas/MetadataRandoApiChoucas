@@ -31,6 +31,7 @@ import choucas.metadata.rando.process.APItineraireProcess;
 import choucas.metadata.rando.process.APWaypointProcess;
 import choucas.metadata.rando.process.C2CRouteProcess;
 import choucas.metadata.rando.process.C2CWaypointProcess;
+import choucas.metadata.rando.process.LandmarkIntegratedProcess;
 import choucas.metadata.rando.process.RefugesInfoProcess;
 
 /**
@@ -99,7 +100,7 @@ public class MainCreateDescribeProcess {
 		try {
 			MainCreateDescribeProcess main = new MainCreateDescribeProcess();
 			
-			/*main.createMetadataFiles(RefugesInfoProcess.class, "./data/DescribeService/RefugesInfo_OOR_DescribeService.xml");
+			main.createMetadataFiles(RefugesInfoProcess.class, "./data/DescribeService/RefugesInfo_OOR_DescribeService.xml");
 			
 			System.out.println("-----");
 			
@@ -110,12 +111,10 @@ public class MainCreateDescribeProcess {
 			
 			main.createMetadataFiles(APWaypointProcess.class, "./data/DescribeService/AP_OOR_DescribeService.xml");
 			main.createMetadataFiles(APItineraireProcess.class, "./data/DescribeService/AP_ITINERAIRE_DescribeService.xml");
-			*/
 			
 			System.out.println("-----");
 			
-			// Fusion
-			
+			main.createMetadataFiles(LandmarkIntegratedProcess.class, "./data/DescribeService/LandmarkIntegrated_DescribeService.xml");
 			
 			System.out.println("-----");
 			
