@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><wps:ProcessOfferings xmlns:wps="http://www.opengis.net/wps/2.0" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+  <wps:ProcessOffering jobControlOptions="async-execute dismiss sync-execute" outputTransmission="value reference" processVersion="1.0.0" processModel="native">
+    <wps:Process xsi:schemaLocation="http://www.opengis.net/wps/2.0 http://schemas.opengis.net/wps/2.0/wps.xsd">
+      <ows:Title>Extraction of landmarks from the data warehouse per bounding box and merge strategy.</ows:Title>
+      <ows:Abstract>This service returns different types of landmarks in mountain areas from the choucas data warehouse. The strategy defines the merging mode.</ows:Abstract>
+      <ows:Identifier>choucas.metadata.rando.process.LandmarkIntegratedProcess</ows:Identifier>
+      <wps:Input minOccurs="0" maxOccurs="1">
+        <ows:Title>Le nom de l'objet de repère.</ows:Title>
+        <ows:Abstract>Filtrer les objets de repères portant uniquement ce nom. Ce paramètre est optionnel</ows:Abstract>
+        <ows:Identifier>landmarkName</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Le type des landmarks à exporter.</ows:Title>
+        <ows:Abstract>Définir le type des objets de repère à exporter (lac, refuge, etc.). Les types correspondent aux classes de l'ontologie de repères (OOR).</ows:Abstract>
+        <ows:Identifier>landmarkType</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>La stratégie de fusion</ows:Title>
+        <ows:Abstract>La stratégie de fusion permet de définir sous quelle forme les données fusionnées vont sortir du service. La fusion porte aussi bien sur la géométrie que sur les attributs. La fusion 'detailed' nécessite obligatoirement la saisie du paramètre source.</ows:Abstract>
+        <ows:Identifier>strategy</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>detailed</ows:Value>
+              <ows:Value>naive</ows:Value>
+              <ows:Value>polygonal</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue>naive</ows:DefaultValue>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="1" maxOccurs="1">
+        <ows:Title>Les dimensions de la bbox contenant les objets de repères à exporter.</ows:Title>
+        <ows:Abstract>Les dimensions de la bbox qui permettent de filtrer spatialement les objets de repères: xmin, ymin, xmax, ymax dans la projection 2154.</ows:Abstract>
+        <ows:Identifier>bbox</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Input minOccurs="0" maxOccurs="1">
+        <ows:Title>Le nom de la source de données fusionnée avec la BDTopo. Si la stratégie de fusion 'detailed' est choisie.</ows:Title>
+        <ows:Abstract>Le nom de la source de données fusionnée avec la BDTopo. Si la stratégie de fusion 'detailed' est choisie.</ows:Abstract>
+        <ows:Identifier>datasetsource</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AllowedValues>
+              <ows:Value>c2c</ows:Value>
+              <ows:Value>osm</ows:Value>
+              <ows:Value>parcs</ows:Value>
+              <ows:Value>refinfo</ows:Value>
+            </ows:AllowedValues>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#string">string</ows:DataType>
+            <ows:DefaultValue/>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Input>
+      <wps:Output>
+        <ows:Title>Liste des landmarks avec attributs et géométries fusionnées suivant la stratégie choisie.</ows:Title>
+        <ows:Abstract>Liste des objets de repères fusionnés</ows:Abstract>
+        <ows:Identifier>documents</ows:Identifier>
+        <wps:ComplexData>
+          <wps:Format mimeType="text/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-8" schema="http://www.opengis.net/gml/3.2"/>
+          <wps:Format mimeType="text/xml" encoding="UTF-16"/>
+          <wps:Format mimeType="text/xml" schema="http://www.opengis.net/gml/3.2"/>
+        </wps:ComplexData>
+      </wps:Output>
+      <wps:Output>
+        <ows:Title>Nombre de landmarks trouvés</ows:Title>
+        <ows:Abstract>Nombre de landmarks dans la réponse de la requête</ows:Abstract>
+        <ows:Identifier>total</ows:Identifier>
+        <wps:LiteralData>
+          <wps:Format mimeType="application/xml" default="true"/>
+          <wps:Format mimeType="text/xml"/>
+          <wps:Format mimeType="text/plain"/>
+          <wps:Format mimeType="text/plain" encoding="base64"/>
+          <LiteralDataDomain default="true">
+            <ows:AnyValue/>
+            <ows:DataType ows:reference="https://www.w3.org/2001/XMLSchema-datatypes#int">int</ows:DataType>
+          </LiteralDataDomain>
+        </wps:LiteralData>
+      </wps:Output>
+    </wps:Process>
+  </wps:ProcessOffering>
+</wps:ProcessOfferings>
