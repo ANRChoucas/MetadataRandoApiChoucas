@@ -38,7 +38,7 @@ public class C2CRouteProcess {
 	
 	
 	@LiteralInput(identifier = "act",
-            abstrakt = "L'activité pratiqué par le contributeur sur l'itinéraire, parmi la liste suivante :  skitouring, snow_ice_mixed, mountain_climbing, rock_climbing, ice_climbing, hingiking, snowshoeing, paragliding, mountain_biking, via_ferrata, slacklining.",
+            abstrakt = "L'activité pratiquée par le contributeur sur l'itinéraire, parmi la liste suivante :  skitouring, snow_ice_mixed, mountain_climbing, rock_climbing, ice_climbing, hingiking, snowshoeing, paragliding, mountain_biking, via_ferrata, slacklining.",
             title = "L'activité de la randonnée",
             defaultValue="")
 	public ActEnum act;
